@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://b6aj872jbxwqn"]
+[gd_scene load_steps=6 format=3 uid="uid://b6aj872jbxwqn"]
 
-[node name="LightSwitch" type="Node2D"]
+[ext_resource type="Script" uid="uid://b5qkmb180c554" path="res://light_switch.gd" id="1_1m1gx"]
+[ext_resource type="Texture2D" uid="uid://877pvlfec5pk" path="res://Resource/icon.svg" id="1_nw67r"]
+[ext_resource type="AudioStream" path="res://Resource/sound/light-alert.mp3" id="2_3tt4p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv7nh"]
+size = Vector2(31, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5deac"]
+atlas = ExtResource("1_nw67r")
+
+[node name="LightSwitch" type="Area2D"]
+script = ExtResource("1_1m1gx")
+sound_radius = 1200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_dv7nh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2.9999998)
+scale = Vector2(0.17968751, 0.1699219)
+texture = SubResource("AtlasTexture_5deac")
+
+[node name="SwitchAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_3tt4p")

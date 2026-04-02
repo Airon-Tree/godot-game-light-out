@@ -1,20 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://04jqnvpwmlvl"]
+[gd_scene load_steps=7 format=3 uid="uid://04jqnvpwmlvl"]
 
 [ext_resource type="Script" uid="uid://cku60gvx32sta" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://c1lulj8aoxbuk" path="res://Resource/bk_player_assets/player_hk_recoil.png" id="2_onrkg"]
+[ext_resource type="AudioStream" uid="uid://37vhqww2e5lu" path="res://Resource/sound/step-sound.mp3" id="3_l280m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
-size = Vector2(35, 29)
+size = Vector2(27, 23)
+
+[sub_resource type="Gradient" id="Gradient_6npt3"]
+offsets = PackedFloat32Array(0, 0.65, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.22, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qej6f"]
+gradient = SubResource("Gradient_6npt3")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 16
 script = ExtResource("1_4flbx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.536743e-07, -9.536743e-07)
+scale = Vector2(1.012931, 0.90570176)
 texture = ExtResource("2_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7.5, -1.5)
+position = Vector2(6, -2)
 shape = SubResource("RectangleShape2D_i3pqv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_enabled = false
+editor_draw_limits = true
+
+[node name="DarknessLight" type="PointLight2D" parent="."]
+enabled = false
+energy = 1.2
+texture = SubResource("GradientTexture2D_qej6f")
+texture_scale = 0.75
+
+[node name="FootstepAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_l280m")
+volume_db = -11.45

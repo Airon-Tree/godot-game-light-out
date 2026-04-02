@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://7rdunc5pqm6p"]
+[gd_scene load_steps=5 format=3 uid="uid://7rdunc5pqm6p"]
 
+[ext_resource type="Script" path="res://exit_door.gd" id="1_cln3t"]
 [ext_resource type="Texture2D" uid="uid://bxdvom5wimwsv" path="res://Resource/Tech Dungeon Roguelite - Asset Pack (v7)/Props and Items/props and items x1.png" id="1_7sac5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ti4c3"]
@@ -10,6 +11,7 @@ atlas = ExtResource("1_7sac5")
 region = Rect2(0, 386.4, 65.52589, 29.307922)
 
 [node name="ExitDoor" type="Area2D"]
+script = ExtResource("1_cln3t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ti4c3")
